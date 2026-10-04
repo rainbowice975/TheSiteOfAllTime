@@ -1,131 +1,160 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Banana</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<title>Banana</title>
 
-        body {
-            background: black;
-            color: white;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: Arial, sans-serif;
-            overflow: hidden;
-        }
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+    body {
+        background: black;
+        color: white;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 1200px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .banana {
+        width: 45%;
+        max-width: 500px;
+
+        opacity: 0;
+        filter: grayscale(100%);
+
+        animation: bananaFade 2s ease forwards;
 
 
-        .banana {
-            width: 45%;
-            max-width: 500px;
+        cursor: pointer;
+    }
 
- 
+    .text {
+        width: 45%;
+
+        opacity: 0;
+        transform: translateX(50px);
+
+        animation: textAppear 1s ease forwards;
+        animation-delay: 2s;
+    }
+
+    .text h1 {
+        font-size: 4rem;
+        margin-bottom: 20px;
+    }
+
+    .text p {
+        font-size: 1.3rem;
+        color: #aaa;
+        line-height: 1.6;
+    }
+
+    @keyframes bananaFade {
+        from {
             opacity: 0;
-            filter: grayscale(100%);
-
-
-            animation: bananaFade 2s ease forwards;
         }
 
+        to {
+            opacity: 1;
+        }
+    }
 
-        .text {
-            width: 45%;
-
+    @keyframes textAppear {
+        from {
             opacity: 0;
             transform: translateX(50px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
 
 
-            animation: textAppear 1s ease forwards;
-            animation-delay: 2s;
+    @keyframes bananaDisappear {
+        from {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        to {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+    }
+
+    .banana.gone {
+        animation: bananaDisappear 0.5s ease forwards;
+        pointer-events: none;
+    }
+
+    @media (max-width: 700px) {
+        .container {
+            flex-direction: column;
+            gap: 40px;
+            text-align: center;
+        }
+
+        .banana,
+        .text {
+            width: 80%;
         }
 
         .text h1 {
-            font-size: 4rem;
-            margin-bottom: 20px;
+            font-size: 2.5rem;
         }
-
-        .text p {
-            font-size: 1.3rem;
-            color: #aaa;
-            line-height: 1.6;
-        }
+    }
+</style>
 
 
-        @keyframes bananaFade {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-
-        @keyframes textAppear {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-
-        @media (max-width: 700px) {
-            .container {
-                flex-direction: column;
-                gap: 40px;
-                text-align: center;
-            }
-
-            .banana,
-            .text {
-                width: 80%;
-            }
-
-            .text h1 {
-                font-size: 2.5rem;
-            }
-        }
-    </style>
 </head>
 
 <body>
 
-    <div class="container">
+<div class="container">
 
-        <img class="banana" src="banana.png" alt="Banana">
+    <img 
+        class="banana" 
+        src="banana.png" 
+        alt="Banana"
+        onclick="makeBananaDisappear()"
+    >
 
-        <div class="text">
-            <h1>In Memory of Potassium</h1>
-            <p>
-                September 17th, 2021
-            </p>
-        </div>
-
+    <div class="text">
+        <h1>In Memory of Potassium</h1>
+        <p>
+            September 17th, 2021
+        </p>
     </div>
+
+</div>
+
+<script>
+    function makeBananaDisappear() {
+        document.querySelector(".banana").classList.add("none");
+    }
+</script>
+
 
 </body>
 </html>
