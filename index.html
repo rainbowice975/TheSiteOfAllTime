@@ -153,26 +153,6 @@
         document.querySelector(".banana").classList.add("gone");
     }
 
-    let originalTitle = document.title;
-    let intervalId = null;
-  const messages = [
-    "Memorial Banana ??? ? Dude"
-  ];
-
-  document.addEventListener("visibilitychange", () => {
-    if (document.hidden) {
-      // Tab is unfocused: start changing titles every 2 seconds (2000ms)
-      let index = 0;
-      intervalId = setInterval(() => {
-        document.title = messages[index];
-        index = (index + 1) % messages.length;
-      }, 2000);
-    } else {
-      // Tab is focused: stop interval and restore original title
-      clearInterval(intervalId);
-      document.title = originalTitle;
-    }
-  });
 </script>
 
 
