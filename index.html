@@ -37,22 +37,16 @@
     .banana {
         width: 45%;
         max-width: 500px;
-
         opacity: 0;
         filter: grayscale(100%);
-
         animation: bananaFade 2s ease forwards;
-
-
         cursor: pointer;
     }
 
     .text {
         width: 45%;
-
         opacity: 0;
         transform: translateX(50px);
-
         animation: textAppear 1s ease forwards;
         animation-delay: 2s;
     }
@@ -89,7 +83,6 @@
             transform: translateX(0);
         }
     }
-
 
     @keyframes bananaDisappear {
         from {
@@ -131,6 +124,7 @@
 
 <body>
 
+
 <div class="container">
 
     <img 
@@ -151,6 +145,11 @@
 
 <script>
     function makeBananaDisappear() {
+
+
+        const sound = new Audio("sound.mp3");
+        sound.play();
+
         document.querySelector(".banana").classList.add("gone");
     }
 </script>
